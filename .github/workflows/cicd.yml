@@ -17,7 +17,6 @@ jobs:
 
     outputs:
       commit_hash: ${{ steps.context.outputs.commit_hash }}
-      full_commit_hash: ${{ steps.context.outputs.full_commit_hash }}
       git_repo_branch: ${{ steps.context.outputs.git_repo_branch }}
       image_tag: ${{ steps.context.outputs.image_tag }}
 
@@ -56,7 +55,7 @@ jobs:
               owner: context.repo.owner,
               repo: context.repo.repo,
               ref: refs/tags/${{ needs.context.outputs.commit_hash }},
-              sha: ${{ needs.context.outputs.full_commit_hash }}
+              sha: context.sha
             })
 
       - name: Push Image to GCR
