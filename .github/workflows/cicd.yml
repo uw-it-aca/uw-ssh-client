@@ -54,7 +54,7 @@ jobs:
             github.rest.git.createRef({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              ref: refs/tags/${{ needs.context.outputs.commit_hash }},
+              ref: "refs/tags/${{ needs.context.outputs.commit_hash }}",
               sha: context.sha
             })
 
